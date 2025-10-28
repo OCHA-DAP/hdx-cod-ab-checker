@@ -1,0 +1,7 @@
+services:
+  hdx-cod-checker:
+    build: .
+    env_file: .env
+    volumes:
+      - ./src:/srv/src
+      - ./data:/srv/data
