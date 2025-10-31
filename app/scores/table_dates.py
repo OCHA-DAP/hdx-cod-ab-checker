@@ -4,7 +4,11 @@ from pandas import DataFrame
 def main(checks: DataFrame) -> DataFrame:
     """Score date values within dataset."""
     scores = checks[["iso3", "version", "level"]].copy()
-    group = checks[["iso3", "valid_on_1"]].groupby("iso3").agg(["count", "nunique"])
+    group = (
+        checks[["iso3", "version", "valid_on_1"]]
+        .groupby(["iso3", "version"])
+        .agg(["count", "nunique"])
+    )
     group.columns = group.columns.get_level_values(1)
     group["valid_on_all_equal"] = (group["count"] - group["nunique"] + 1) / group[
         "count"

@@ -40,6 +40,9 @@ ARCGIS_METADATA_URL = f"{ARCGIS_SERVICE_URL}/{ARCGIS_METADATA}/FeatureServer/0"
 
 ARCGIS_CHECK = is_bool(getenv("ARCGIS_CHECK", "NO"))
 ARCGIS_DOWNLOAD = is_bool(getenv("ARCGIS_DOWNLOAD", "NO"))
+RUN_CHECKS = is_bool(getenv("RUN_CHECKS", "NO"))
+RUN_SCORES = is_bool(getenv("RUN_SCORES", "NO"))
+RUN_IMAGES = is_bool(getenv("RUN_IMAGES", "NO"))
 
 ATTEMPT = int(getenv("ATTEMPT", "5"))
 WAIT = int(getenv("WAIT", "10"))

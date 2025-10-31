@@ -1,4 +1,4 @@
-FROM public.ecr.aws/unocha/python:3.13-stable
+FROM python:3.13-alpine
 
 WORKDIR /srv
 

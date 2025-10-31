@@ -3,7 +3,14 @@ from pathlib import Path
 
 from . import attributes, images
 from .checks import __main__ as checks
-from .config import ARCGIS_CHECK, ARCGIS_DOWNLOAD, data_dir
+from .config import (
+    ARCGIS_CHECK,
+    ARCGIS_DOWNLOAD,
+    RUN_CHECKS,
+    RUN_IMAGES,
+    RUN_SCORES,
+    data_dir,
+)
 from .download.boundaries import main as download_boundaries
 from .download.meta import main as download_meta
 from .download.updated import main as download_updated
@@ -22,12 +29,14 @@ def main() -> None:
     if ARCGIS_CHECK:
         download_meta(token)
         download_updated(token)
-    elif ARCGIS_DOWNLOAD:
+    if ARCGIS_DOWNLOAD:
         download_boundaries(token)
-    else:
+    if RUN_CHECKS:
         checks.main()
+    if RUN_SCORES:
         scores.main()
         style.main()
+    if RUN_IMAGES:
         attributes.main()
         images.main()
 
